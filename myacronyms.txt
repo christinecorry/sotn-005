@@ -5,3 +5,7 @@
 #
 # Example:
 #   MIA:Missing In Action
+PC:Principal Component
+IQ:Image Quality
+OLS:Ordinary Least Squares
+SG:Savitzky-Golay
