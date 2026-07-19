@@ -6,6 +6,8 @@
 # Example:
 #   MIA:Missing In Action
 PC:Principal Component
+BH:Benjamini-Hochberg
+FDR:False Discovery Rate
 IQ:Image Quality
 OLS:Ordinary Least Squares
 SG:Savitzky-Golay

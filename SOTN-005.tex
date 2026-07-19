@@ -8,7 +8,14 @@
 \usepackage{array}
 \usepackage{makecell}
 
+% Leave \paragraph headings unnumbered (lsstdoc numbers them by default,
+% producing headings like "1.1.0.1").
+\setcounter{secnumdepth}{3}
+
 % Local commands go here.
+% lsstdoc loads unicode-math under XeLaTeX, which breaks \boldsymbol;
+% map it to the unicode-math bold-italic equivalent.
+\AtBeginDocument{\ifdefined\symbfit\renewcommand{\boldsymbol}[1]{\symbfit{#1}}\fi}
 
 %If you want glossaries
 %\input{aglossary.tex}
@@ -824,6 +831,8 @@ The Rubin Observatory system is complex. Dynamic thermal effects on focus are no
 \setcounter{table}{0}
 \renewcommand{\thefigure}{A\arabic{figure}}
 \renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\theHfigure}{A\arabic{figure}}
+\renewcommand{\theHtable}{A\arabic{table}}
 
 \begin{table*}[!h]
 \centering
