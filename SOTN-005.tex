@@ -257,8 +257,8 @@ M1M3 glass         & Primary mirror (M1M3) glass temperature                    
 M2 glass ring 5     & Secondary mirror glass, ring sensor 5                      \\[3pt]
 M2 glass ring 6     & Secondary mirror glass, ring sensor 6                      \\[6pt]
 \multicolumn{2}{l}{\textit{Telescope structure}} \\[2pt]
-TMA truss $+x/+y$   & Telescope mount assembly truss, $+x/+y$ quadrant            \\[3pt]
-TMA truss $-x/-y$   & Telescope mount assembly truss, $-x/-y$ quadrant            \\[6pt]
+TMA truss $+x/{+y}$   & Telescope mount assembly truss, $+x/{+y}$ quadrant            \\[3pt]
+TMA truss $-x/{-y}$   & Telescope mount assembly truss, $-x/{-y}$ quadrant            \\[6pt]
 \multicolumn{2}{l}{\textit{Optical alignment components}} \\[2pt]
 Camera hexapod      & Camera hexapod rotator structure                           \\[3pt]
 M2 hexapod          & Secondary mirror hexapod structure                          \\[3pt]
@@ -289,16 +289,16 @@ M1M3-level air $-$ Near-M2 air
     & Vertical stratification within enclosure between mirror-level
       and near-M2 air. \\[6pt]
 \multicolumn{2}{l}{\textit{Structural-to-enclosure-air}} \\[2pt]
-TMA $-x/-y$ $-$ Near-M2 air
+TMA truss $-x/{-y}$ $-$ Near-M2 air
     & Truss thermal lag vs enclosure air. Dominant slope-scale predictor. \\[3pt]
-TMA $+x/+y$ $-$ Near-M2 air
+TMA truss $+x/{+y}$ $-$ Near-M2 air
     & As above for second truss sensor. \\[3pt]
-TMA $-x/-y$ $-$ Weather station
+TMA truss $-x/{-y}$ $-$ Weather station
     & Total structural lag relative to nighttime ambient environment. \\[3pt]
-TMA $+x/+y$ $-$ TMA $-x/-y$
+TMA truss $+x/{+y}$ $-$ TMA truss $-x/{-y}$
     & Asymmetric truss loading; can produce non-rotationally-symmetric
       aberrations. \\[3pt]
-TMA $-x/-y$ $-$ M1M3-level air
+TMA truss $-x/{-y}$ $-$ M1M3-level air
     & Within-enclosure vertical gradient combining structural lag with
       mirror environment. Dominant levels-scale predictor. \\[6pt]
 \multicolumn{2}{l}{\textit{Mirror glass}} \\[2pt]
@@ -455,7 +455,7 @@ Primary results were replicated with window lengths $w \in \{5, 7, 9\}$. Qualita
 \section{RESULTS}
 \label{sec: Results}
 
-The analysis is presented in six sections which build on the statistical methods and findings of the prior analysis. First, we examine the relationship between each temperature sensor and $Z_4$ at the \textit{levels scale} -- exploring whether the thermal state of the telescope (absolute level of a sensor reading, mean-centered within each run) predicts the optical state ($Z_4^{(c)}$). We extend this analysis to multivariate regression, with methods discussed in Section~\ref{sec: regression methods}, to assess whether sensors carry independent information beyond their pairwise correlations. Next, we directly test the hypothesis that particular proxies of thermal gradients reflecting dome and mirror seeing impact $Z_4$ with the proxies detailed in Section~\ref{subsec: Proxies}. Next, we use PCA to decompose the thermal state into orthogonal modes and examine how they couple with $Z_4$. Then, these analyses are repeated at the \textit{slope scale} -- exploring whether the rate of change of temperature predicts the rate of change of $Z_4^{(c)}$. Finally, we attempt to stratify and compare the analysis by the smoothness of the run, characterized by methods discussed in Section~\ref{subsec: smoothness}.
+The analysis is presented in six sections which build on the statistical methods and findings of the prior analysis. First, we examine the relationship between each temperature sensor and $Z_4$ at the \textit{levels scale} -- exploring whether the thermal state of the telescope (absolute level of a sensor reading, mean-centered within each run) predicts the optical state ($Z_4^{(c)}$). We extend this analysis to multivariate regression, with methods discussed in Section~\ref{sec: regression methods}, to assess whether sensors carry independent information beyond their pairwise correlations. Next, we directly test the hypothesis that particular proxies of thermal gradients reflecting dome and mirror seeing impact $Z_4$ with the proxies detailed in Section~\ref{subsec: Proxies}. Next, we use PCA to decompose the thermal state into orthogonal modes and examine how they couple with $Z_4$. Then, these analyses are repeated at the \textit{slope scale} -- exploring whether the rate of change of temperature predicts the rate of change of $Z_4^{(c)}$. Finally, we attempt to stratify and compare the analysis by the smoothness of the run, characterized by methods discussed in Section~\ref{subsec: Preprocessing}.
 
 All correlations are reported as Pearson $r$ with autocorrelation-corrected $p$-values (Quenouille lag-1 $N_{eff}$ correction) and Benjamini-Hochberg multiple comparisons adjustment at $\alpha = 0.05$, both discussed in Section~\ref{subsec: Correlation}. Significance throughout refers to survival of the BH correction unless otherwise stated.
 
@@ -474,11 +474,11 @@ We begin by computing the Pearson correlation between each mean-centered tempera
 
 Figure~\ref{fig:megafig}(a)  shows the pooled linear correlation strength $r$ between each temperature sensor and $Z_4^{(c)}$. The only temperature sensors which survive the BH significance correction are 
 \begin{itemize}
-    \item M2 Glass Ring 6 ($r=0.292$),
-    \item TMA Truss -x/-y ($r=0.255$),
-    \item M1M3 Glass ($r=-0.207$),
-    \item Camera Hexapod ($r=0.204$), and
-    \item M2 Hexapod ($r=0.135$)
+    \item M2 glass ring 6 ($r=0.292$),
+    \item TMA truss $-x/{-y}$ ($r=0.255$),
+    \item M1M3 glass ($r=-0.207$),
+    \item Camera hexapod ($r=0.204$), and
+    \item M2 hexapod ($r=0.135$)
 \end{itemize}
  listed in descending absolute $r$ value. Scatter plots of each of the top four sensors against $Z_4^{(c)}$ colored by run are presented in Figure~\ref{fig:top 4}. These show that the linear best fit is not representative of all runs, with some in the opposite direction of the pooled correlation. A detailed table of the correlation metrics is presented in Table~\ref{tab:levels_correlations}.
 
@@ -497,14 +497,14 @@ correction.}
 Sensor & $r$ & $\rho$ & $|r - \rho|$ & $p$ \\
 \midrule
 M2 glass ring 6      & \textbf{0.292}  & \textbf{0.251}  & 0.041$^\dagger$ & \textbf{0.0000} \\
-TMA truss -x/-y         & \textbf{0.255}  & \textbf{0.232}  & 0.023           & \textbf{0.0002} \\
+TMA truss $-x/{-y}$         & \textbf{0.255}  & \textbf{0.232}  & 0.023           & \textbf{0.0002} \\
 M1M3 glass   & \textbf{-0.207} & \textbf{-0.032} & 0.175$^\dagger$ & \textbf{0.0024} \\
 Camera hexapod    & \textbf{0.204}  & \textbf{0.148}  & 0.056$^\dagger$ & \textbf{0.0028} \\
 M2 hexapod        & 0.135           & 0.062           & 0.073$^\dagger$ & 0.0400          \\
 Weather station       & -0.110          & -0.074          & 0.036$^\dagger$ & 0.0954          \\
 Near-M2 air         & 0.112           & 0.168           & 0.056$^\dagger$ & 0.0999          \\
 M1M3-level air    & -0.109          & -0.043          & 0.066$^\dagger$ & 0.1173          \\
-TMA truss +x/+y        & 0.072           & 0.076           & 0.004           & 0.2922          \\
+TMA truss $+x/{+y}$        & 0.072           & 0.076           & 0.004           & 0.2922          \\
 Sonic temperature          & -0.052          & -0.087          & 0.035$^\dagger$ & 0.2960          \\
 M2 glass ring 5      & 0.063           & 0.036           & 0.027           & 0.3172          \\
 Camera rotator   & -0.033          & 0.021           & 0.054$^\dagger$ & 0.6263          \\
@@ -513,7 +513,7 @@ Above-M1M3 air          & -0.004          & -0.059          & 0.055$^\dagger$ & 
 \end{tabular}
 \end{table}
 
-We can also compare the Pearson $r$ value with the Spearman $\rho$, as presented in Table~\ref{tab:levels_correlations}, to assess whether the correlations are driven by outliers. Close agreement between the two metrics would indicate that the trend is monotonic. Disagreements of larger than around $0.03$ flag outlier sensitivity. Among our five BH significant sensors, only TMA truss $-x/-y$ has an $|r-\rho |$ value less than $0.03$.
+We can also compare the Pearson $r$ value with the Spearman $\rho$, as presented in Table~\ref{tab:levels_correlations}, to assess whether the correlations are driven by outliers. Close agreement between the two metrics would indicate that the trend is monotonic. Disagreements of larger than around $0.03$ flag outlier sensitivity. Among our five BH significant sensors, only TMA truss $-x/{-y}$ has an $|r-\rho |$ value less than $0.03$.
 
 The pairwise correlations alone cannot determine whether a sensor that correlates with $Z_4^{(c)}$ has independent predictive information from the general collinearity of the sensors. A sensor may appear to couple with $Z_4$ when in fact both $Z_4$ and the sensor are coupled with a separate overall thermal mode driving the effect. To address this, we turn to multivariate Ridge regression.
 
@@ -538,16 +538,16 @@ We then repeated the individual correlation analysis looking at thermal gradient
 
 Figure~\ref{fig:megafig}(b) shows the correlation strength of each gradient proxy with $Z_4^{(c)}$. Eight gradients  survive BH significance correction. These are 
 \begin{itemize}
-    \item TMA Truss -x/-y -- M1M3-level Air ($r=0.333$),
-    \item M1M3 Glass -- Near-M2 Air ($r=-0.269$),
-    \item TMA Truss +x/+y -- TMA Truss -x/-y ($r=-0.234$),
-    \item M1M3-level Air -- Near-M2 Air ($r=-0.218$),
-    \item TMA Truss -x/-y -- Weather Station ($r=0.216$),
-    \item Near-M2 Air -- Weather Station ($r=0.185$),
-    \item M2 Hexapod -- Camera Hexapod ($r=-0.160$), and
-    \item Near-M2 Air -- Camera-level Air ($r=0.152$)
+    \item TMA truss $-x/{-y}$ -- M1M3-level air ($r=0.333$),
+    \item M1M3 glass -- Near-M2 air ($r=-0.269$),
+    \item TMA truss $+x/{+y}$ -- TMA truss $-x/{-y}$ ($r=-0.234$),
+    \item M1M3-level air -- Near-M2 air ($r=-0.218$),
+    \item TMA truss $-x/{-y}$ -- Weather station ($r=0.216$),
+    \item Near-M2 air -- Weather station ($r=0.185$),
+    \item M2 hexapod -- Camera hexapod ($r=-0.160$), and
+    \item Near-M2 air -- Camera-level air ($r=0.152$)
 \end{itemize}
-listed in descending order of $|r|$. Table~\ref{tab:gradient_levels_correlations} presents the correlation metrics of the gradient proxies and $Z_4^{(c)}$. All measures except for M1M3-level Air -- Near-M2 Air are flagged for discrepancy between Pearson $r$ correlation metric and Spearman $\rho$, indicating that most of the correlation between gradients and $Z_4^{(c)}$ is sensitive to outliers.
+listed in descending order of $|r|$. Table~\ref{tab:gradient_levels_correlations} presents the correlation metrics of the gradient proxies and $Z_4^{(c)}$. All measures except for M1M3-level air -- Near-M2 air are flagged for discrepancy between Pearson $r$ correlation metric and Spearman $\rho$, indicating that most of the correlation between gradients and $Z_4^{(c)}$ is sensitive to outliers.
 
 \begin{table}[h]
 \centering
@@ -564,16 +564,16 @@ correction.}
 \toprule
 Gradient & $r$ & $\rho$ & $|r - \rho|$ & $p$ \\
 \midrule
-TMA $-x/y$ $-$ M1M3-level air     & \textbf{0.333}  & \textbf{0.269}  & 0.064$^\dagger$ & \textbf{0.0000} \\
+TMA truss $-x/{-y}$ $-$ M1M3-level air     & \textbf{0.333}  & \textbf{0.269}  & 0.064$^\dagger$ & \textbf{0.0000} \\
 M1M3 glass $-$ Near-M2 air        & \textbf{-0.269} & \textbf{-0.204} & 0.065$^\dagger$ & \textbf{0.0001} \\
-TMA $+x/y$ $-$ TMA $-x/y$         & \textbf{-0.234} & \textbf{-0.120} & 0.114$^\dagger$ & \textbf{0.0008} \\
-TMA $-x/y$ $-$ Weather station    & \textbf{0.216}  & \textbf{0.173}  & 0.043$^\dagger$ & \textbf{0.0008} \\
+TMA truss $+x/{+y}$ $-$ TMA truss $-x/{-y}$         & \textbf{-0.234} & \textbf{-0.120} & 0.114$^\dagger$ & \textbf{0.0008} \\
+TMA truss $-x/{-y}$ $-$ Weather station    & \textbf{0.216}  & \textbf{0.173}  & 0.043$^\dagger$ & \textbf{0.0008} \\
 M1M3-level air $-$ Near-M2 air    & \textbf{-0.218} & \textbf{-0.192} & 0.026           & \textbf{0.0013} \\
 Near-M2 air $-$ Weather station   & \textbf{0.185}  & \textbf{0.153}  & 0.032$^\dagger$ & \textbf{0.0041} \\
 M2 hex $-$ Camera hex             & \textbf{-0.160} & \textbf{-0.240} & 0.079$^\dagger$ & \textbf{0.0212} \\
 Near-M2 air $-$ Camera-level air  & \textbf{0.152}  & \textbf{0.233}  & 0.081$^\dagger$ & \textbf{0.0258} \\
-TMA $-x/y$ $-$ Near-M2 air       & 0.121           & 0.096           & 0.024           & 0.0691          \\
-TMA $+x/y$ $-$ Near-M2 air       & -0.076          & -0.014          & 0.062$^\dagger$ & 0.2683          \\
+TMA truss $-x/{-y}$ $-$ Near-M2 air       & 0.121           & 0.096           & 0.024           & 0.0691          \\
+TMA truss $+x/{+y}$ $-$ Near-M2 air       & -0.076          & -0.014          & 0.062$^\dagger$ & 0.2683          \\
 M1M3 glass $-$ M1M3-level air     & -0.068          & -0.021          & 0.047$^\dagger$ & 0.3259          \\
 Camera hex $-$ Near-M2 air        & 0.051           & 0.015           & 0.037$^\dagger$ & 0.4590          \\
 M2 ring 5 $-$ M2 ring 6          & -0.021          & -0.098          & 0.077$^\dagger$ & 0.7459          \\
@@ -595,7 +595,7 @@ A recurrent confounding consideration in this analysis is the collinearity of th
     \label{fig:pca mc}
 \end{figure}
 
-Figure~\ref{fig:pca mc} presents the PCA loadings -- coefficients of the linear combination of variables which compose each principal component -- computed on the mean-centered thermal sensor data. Principal Component 1 (PC1) captures almost half (44.6\%) of the thermal variance in the mean-centered data and is composed of a fairly equal positive contribution of all thermal sensors, other than Camera Rotator which has a negative contribution. This seems to be residual variance due to the overall thermal mode which is not completely removed by mean-centering.
+Figure~\ref{fig:pca mc} presents the PCA loadings -- coefficients of the linear combination of variables which compose each principal component -- computed on the mean-centered thermal sensor data. Principal Component 1 (PC1) captures almost half (44.6\%) of the thermal variance in the mean-centered data and is composed of a fairly equal positive contribution of all thermal sensors, other than Camera rotator which has a negative contribution. This seems to be residual variance due to the overall thermal mode which is not completely removed by mean-centering.
 
 \begin{table}[h]
 \centering
@@ -660,14 +660,14 @@ correction at $\alpha = 0.05$. Sorted by $|r|$ at levels scale.}
 Sensor & $r$ & $p$ & $r$ & $p$ \\
 \midrule
 M2 glass ring 6     & \textbf{+0.292} & \textbf{0.000} & +0.065   & 0.269 \\
-TMA truss -x/-y       & \textbf{+0.255} & \textbf{0.000} & +0.055   & 0.342 \\
+TMA truss $-x/{-y}$       & \textbf{+0.255} & \textbf{0.000} & +0.055   & 0.342 \\
 M1M3 glass  & \textbf{-0.207} & \textbf{0.002} & -0.083   & 0.171 \\
 Camera hexapod  & \textbf{+0.204} & \textbf{0.003} & +0.058   & 0.335 \\
 M2 hexapod       & \textbf{+0.135} & \textbf{0.040} & +0.053   & 0.359 \\
 Near-M2 air       & +0.112   & 0.100 & -0.146 & 0.006 \\
 Weather station      & -0.110   & 0.095 & -0.023   & 0.667 \\
 M1M3-level air   & -0.109   & 0.117 & -0.005   & 0.928 \\
-TMA truss +x/+y        & +0.072   & 0.292 & +0.003   & 0.966 \\
+TMA truss $+x/{+y}$        & +0.072   & 0.292 & +0.003   & 0.966 \\
 M2 glass ring 5     & +0.063   & 0.317 & +0.011   & 0.831 \\
 Sonic temperature         & -0.052   & 0.296 & -0.082   & 0.080 \\
 Camera rotator   & -0.033   & 0.626 & +0.007   & 0.909 \\
@@ -679,9 +679,9 @@ Above-M1M3 air        & -0.004   & 0.953 & -0.084   & 0.108 \\
 
 \paragraph{Gradient Proxies} Figure~\ref{fig:megafig}(d) shows the correlation strength of the slope of each temperature gradient sensor ($d(\Delta T)/dt$) with the slope of $Z_4$ ($dZ_4/dt$). Three of the gradient proxies have BH-significant correlations with $Z_4$ at the slope scale. These are 
 \begin{itemize}
-    \item TMA Truss -x/-y -- Near-M2 Air ($r=0.176$),
-    \item Camera Hexapod -- Near-M2 Air ($r=0.162$), \&
-    \item TMA Truss +x/+y -- Near-M2 Air ($r=0.151$).
+    \item TMA truss $-x/{-y}$ -- Near-M2 air ($r=0.176$),
+    \item Camera hexapod -- Near-M2 air ($r=0.162$), \&
+    \item TMA truss $+x/{+y}$ -- Near-M2 air ($r=0.151$).
 \end{itemize}
 
 \begin{table}[htbp]
@@ -700,16 +700,16 @@ at $\alpha = 0.05$. Sorted by $|r|$ at levels scale.}
 \cmidrule(lr){2-3} \cmidrule(lr){4-5}
 Gradient & $r$ & $p$ & $r$ & $p$ \\
 \midrule
-Truss -x/-y $-$ M1M3-level air      & \textbf{+0.333} & \textbf{0.000} & +0.035   & 0.548 \\
+TMA truss $-x/{-y}$ $-$ M1M3-level air      & \textbf{+0.333} & \textbf{0.000} & +0.035   & 0.548 \\
 M1M3 glass $-$ Near-M2 air     & \textbf{-0.269} & \textbf{0.000} & +0.112   & 0.040 \\
-Truss +x/+y $-$ Truss -x/-y           & \textbf{-0.234} & \textbf{0.001} & -0.061   & 0.279 \\
+TMA truss $+x/{+y}$ $-$ TMA truss $-x/{-y}$           & \textbf{-0.234} & \textbf{0.001} & -0.061   & 0.279 \\
 M1M3-level air $-$ Near-M2 air      & \textbf{-0.218} & \textbf{0.001} & +0.132   & 0.016 \\
-Truss -x/-y $-$ Weather station          & \textbf{+0.216} & \textbf{0.001} & +0.012   & 0.826 \\
+TMA truss $-x/{-y}$ $-$ Weather station          & \textbf{+0.216} & \textbf{0.001} & +0.012   & 0.826 \\
 Near-M2 air $-$ Weather station          & \textbf{+0.185} & \textbf{0.004} & -0.033   & 0.537 \\
 M2 hexapod $-$ Camera hexapod     & \textbf{-0.160} & \textbf{0.021} & -0.022   & 0.714 \\
 Near-M2 air $-$ Camera-level air     & \textbf{+0.152} & \textbf{0.026} & -0.093   & 0.086 \\
-Truss -x/-y $-$ Near-M2 air           & +0.121   & 0.069 & \textbf{+0.176} & \textbf{0.001} \\
-Truss +x/+y $-$ Near-M2 air           & -0.076   & 0.268 & \textbf{+0.151} & \textbf{0.005} \\
+TMA truss $-x/{-y}$ $-$ Near-M2 air           & +0.121   & 0.069 & \textbf{+0.176} & \textbf{0.001} \\
+TMA truss $+x/{+y}$ $-$ Near-M2 air           & -0.076   & 0.268 & \textbf{+0.151} & \textbf{0.005} \\
 M1M3 glass $-$ M1M3-level air   & -0.068   & 0.326 & -0.042   & 0.471 \\
 Camera hexapod $-$ Near-M2 air      & +0.051   & 0.459 & \textbf{+0.162} & \textbf{0.003} \\
 M2 glass ring 5 $-$ M2 glass ring 6     & -0.021   & 0.746 & +0.004   & 0.932 \\
@@ -751,26 +751,26 @@ The central finding of this analysis is that the thermal--optical system at the 
 
 \subsection{Independent Predictors}
 
-Of the 13 temperature sensors, 10 have Pearson-Spearman discrepancies suggesting sensitivity to outliers. Only one of the five sensors with significant correlation to $Z_4$ has sufficiently low Pearson-Spearman discrepancy to seem resistant to outlier noise. This was TMA Truss -x/-y. Despite this seeming significant relationship, plotting TMA Truss -x/-y against $Z_4^{(c)}$ in Figure~\ref{fig:top 4} shows that many of the runs have relationships between TMA Truss -x/-y and $Z_4^{(c)}$ not well fit by the correlation value.
+Of the 13 temperature sensors, 10 have Pearson-Spearman discrepancies suggesting sensitivity to outliers. Only one of the five sensors with significant correlation to $Z_4$ has sufficiently low Pearson-Spearman discrepancy to seem resistant to outlier noise. This was TMA truss $-x/{-y}$. Despite this seeming significant relationship, plotting TMA truss $-x/{-y}$ against $Z_4^{(c)}$ in Figure~\ref{fig:top 4} shows that many of the runs have relationships between TMA truss $-x/{-y}$ and $Z_4^{(c)}$ not well fit by the correlation value.
 
 Given the general disagreement between Pearson $r$ and Spearman $\rho$ and the stark difference in linear trends depending on the run, individual sensors do not seem to robustly and dependably predict pooled $Z_4$ trends over the course of all runs. 
 
-This finding is to be expected. Given the complexity of the system and the interdependence of sensors, one temperature independently and consistently explaining dynamic $Z_4$ behavior would be surprising. This is best shown with the variability of Ridge regression coefficients. The inter-quartile range of coefficient distribution crosses zero for every sensor. This indicates the lack of a consistent independent predictor variable. Though, for some of our significantly correlated sensors, the distribution is skewed. Camera Hexapod and TMA Truss -x/-y both have strong positive coefficient outliers for a few of the runs. This shows that in some particular runs these variables are highly predictive, but those are particular non-representative cases.
+This finding is to be expected. Given the complexity of the system and the interdependence of sensors, one temperature independently and consistently explaining dynamic $Z_4$ behavior would be surprising. This is best shown with the variability of Ridge regression coefficients. The inter-quartile range of coefficient distribution crosses zero for every sensor. This indicates the lack of a consistent independent predictor variable. Though, for some of our significantly correlated sensors, the distribution is skewed. Camera hexapod and TMA truss $-x/{-y}$ both have strong positive coefficient outliers for a few of the runs. This shows that in some particular runs these variables are highly predictive, but those are particular non-representative cases.
 
-The same patterns are broadly true for the temperature differential proxy measurements as well. None are strong independent predictors. A larger number of gradients have BH-corrected significant correlations to $Z_4^{(c)}$, but again all but one have Pearson-Spearman discrepancy indicating outlier sensitivity. Interestingly, this single significant gradient whose Pearson-Spearman discrepancy is sufficiently small is M1M3 Air -- Near-M2 Air. This has a stronger correlation than traditional dome seeing between inside and outside air. The gradient throughout the air column is more spatially close. 
+The same patterns are broadly true for the temperature differential proxy measurements as well. None are strong independent predictors. A larger number of gradients have BH-corrected significant correlations to $Z_4^{(c)}$, but again all but one have Pearson-Spearman discrepancy indicating outlier sensitivity. Interestingly, this single significant gradient whose Pearson-Spearman discrepancy is sufficiently small is M1M3-level air -- Near-M2 air. This has a stronger correlation than traditional dome seeing between inside and outside air. The gradient throughout the air column is more spatially close. 
 
-The strongest correlation is between inside air near M1M3 and one of the truss structures. The gradient between the other truss structure sensor and M1M3 air was not included in this analysis, but was checked to see if this relationship is generalizable. It had a statistically significant but weaker correlation at $r=0.181$. Perhaps that discrepancy is reasonable given the predictive strength of the gradient between the two truss structures of $r = -0.234$. 
+The strongest correlation is between inside air near M1M3 and one of the truss structures. The gradient between the other truss structure sensor and M1M3-level air was not included in this analysis, but was checked to see if this relationship is generalizable. It had a statistically significant but weaker correlation at $r=0.181$. Perhaps that discrepancy is reasonable given the predictive strength of the gradient between the two truss structures of $r = -0.234$. 
 
 The second strongest correlation at $r=-0.269$ seems to reflect more traditional mirror seeing on first glance, however it relates the M1M3 mirror with the air near M2. Compare this with the weakest of our correlations, the M2 mirror and the air near M2. These puzzling details again undermine the interpretability of these correlations and suggest much of it is likely due to general noise and outlier sensitivity.
 
 
 \subsection{PCA}
 
-The collinearity of sensors might be handled by first decomposing them into orthogonal thermal modes through PCA. The first principal component, PC1, explains $44.6\%$ of the mean-centered thermal sensor variance and is comprised of a relatively equal positive contribution from all temperature sensors (excluding Camera Rotator, which has a negative contribution to PC1). This indicates that some of the overall thermal mode is not completely removed by mean-centering alone. Future work could use detrending by subtracting the first principal component from the raw data to better isolate dynamic thermal modes. Further principal components have interesting compositions which point to other gradients and sensor interactions. 
+The collinearity of sensors might be handled by first decomposing them into orthogonal thermal modes through PCA. The first principal component, PC1, explains $44.6\%$ of the mean-centered thermal sensor variance and is comprised of a relatively equal positive contribution from all temperature sensors (excluding Camera rotator, which has a negative contribution to PC1). This indicates that some of the overall thermal mode is not completely removed by mean-centering alone. Future work could use detrending by subtracting the first principal component from the raw data to better isolate dynamic thermal modes. Further principal components have interesting compositions which point to other gradients and sensor interactions. 
 
 The second principal component has prominent positive contributions from M1M3 glass and M2 glass ring 6 and prominent negative contributions Above-M1M3 air and M2 glass ring 5 with moderate contributions from many of the other variables. This seems to combine two gradients -- one between the two sensors on the M2 glass and another between the M1M3 glass and air above it. PC2 explains 11.3\% of the remaining variance in the thermal suite. 
 
-PC3 has a very strong positive contributions from Camera Rotator and M1M3-level air with loadings of 0.77 and 0.51 respectively. 
+PC3 has a very strong positive contributions from Camera rotator and M1M3-level air with loadings of 0.77 and 0.51 respectively. 
 
 PC4 seems to capture outside temperature with contributions of 0.65 from the weather station sensor and 0.50 from the sonic temperature. There are also some moderate negative contributions from air above M1M3 and structural sensors. This may capture dome seeing effects between the ambient air temperature outside the dome and the inside air coupled with structural component temperatures. PC4 has a moderate anti-correlation with $Z_4^{(c)}$ at BH-corrected significant levels, but is flagged for Pearson-Spearman discrepancy. 
 
@@ -784,7 +784,7 @@ Though the principal components point to interesting combinations of effects, th
 
 The correlation analysis between slopes of temperature sensors and $Z_4$ measures implicitly controls for overall thermal state, looking specifically about how changes in temperature state impact the change of $Z_4$. There were no statistically significant correlations between the slope of temperature sensors over time with immediate change in $Z_4$.
 
-Near-M2 air was included in all of the top 5 strongest gradient correlations at the slope time scale. None of these correlations were particularly strong with the largest value being only 0.176 for TMA Truss -x/-y -- Near-M2 Air. No gradient proxy was significant at both timescales.
+Near-M2 air was included in all of the top 5 strongest gradient correlations at the slope time scale. None of these correlations were particularly strong with the largest value being only 0.176 for TMA truss $-x/{-y}$ -- Near-M2 air. No gradient proxy was significant at both timescales.
 
 \subsection{Noise}
 Stratification between runs which are particularly noisy and those which follow a more consistent trend might help isolate between unexplained or external noise and predictable thermally driven variation. Plotting our smoothness measure against correlation strength with $Z_4^{(c)}$ shows a statistically significant positive trend across all five strongest predictors. This indicates that smoother runs are more directly coupled with thermal effects. The dynamic runs likely have other sources of noise not accounted for in this analysis causing the more volatile movement of $Z_4$.
@@ -826,7 +826,7 @@ The Rubin Observatory system is complex. Dynamic thermal effects on focus are no
 
 \appendix
 
-\section{SUPPLEMENTARY FIGURES}
+\section{Supplementary Figures}
 
 \setcounter{figure}{0}
 \setcounter{table}{0}
