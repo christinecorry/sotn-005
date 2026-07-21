@@ -353,7 +353,7 @@ $Z_4$ was averaged across wavefront sensors to produce a single \texttt{z4\_mean
 \section{METHODS}
 \label{sec: Methods}
 
-This section describes the analysis pipeline applied to the open-loop stability run dataset. We begin by defining the pre-processing convention used to isolate within-run thermal and optical variation from the run-level offsets that dominate the raw data. We then explain the errors in the two excluded runs and the metric for evaluating smoothness of each run used to later stratify results. We next describe the construction of temperature gradient proxies, the principle component decomposition of the thermal sensor suite, and the Savitzky--Golay slope estimation. Finally we describe the statistical framework for correlation testing, including the autocorrelation correction and multiple comparisons adjustment. 
+This section describes the analysis pipeline applied to the open-loop stability run dataset. We begin by defining the pre-processing convention used to isolate within-run thermal and optical variation from the run-level offsets that dominate the raw data. We then explain the errors in the two excluded runs and the metric for evaluating smoothness of each run used to later stratify results. We next describe the construction of temperature gradient proxies, the principal component decomposition of the thermal sensor suite, and the Savitzky--Golay slope estimation. Finally we describe the statistical framework for correlation testing, including the autocorrelation correction and multiple comparisons adjustment. 
 
 
 \subsection{Pre-processing}
@@ -420,7 +420,7 @@ Ordinary least squares (OLS) regression minimizes the sum of squared residuals:
 \hat{\boldsymbol{\beta}}_\text{OLS} = \underset{\boldsymbol{\beta}}{\arg\min} \left| \mathbf{y} - \mathbf{X}\boldsymbol{\beta} \right|_2^2
 \end{equation}
 
-where $\mathbf{y} \in \mathbb{R}^n$ is the vector of mean-centered $Z_4$ observations and $\mathbf{X} \in \mathbb{R}^{n \times p}$ is the standardized predictor matrix. All predictors were standardized to zero mean and unit variance within each run prior to fitting, so that coefficients are directly comparable across sensors with different temperature ranges. This method does not control for collinearity, thus is only used on regression over the principle components from PCA because they are already orthogonal.
+where $\mathbf{y} \in \mathbb{R}^n$ is the vector of mean-centered $Z_4$ observations and $\mathbf{X} \in \mathbb{R}^{n \times p}$ is the standardized predictor matrix. All predictors were standardized to zero mean and unit variance within each run prior to fitting, so that coefficients are directly comparable across sensors with different temperature ranges. This method does not control for collinearity, thus is only used on regression over the principal components from PCA because they are already orthogonal.
 
 
 \paragraph{Ridge regression}
@@ -431,7 +431,7 @@ To stabilize coefficient estimates in the presence of collinearity, we fit Ridge
 
 The penalty term $\alpha ||\boldsymbol{\beta}||^2_2$ shrinks all coefficients toward zero. In the presence of collinear predictors, Ridge distributes predictive credit across correlated variables rather than allocating it arbitrarily to whichever happens to be numerically dominant in a given sample. The regularization parameter was selected independently for each run by cross-validation over $\alpha \in \{0.01, 0.1, 1.0, 10.0\}$.
 
-\subsection{Principle Component Analysis}
+\subsection{Principal Component Analysis}
 \label{subsec: PCA}
 
 Principal component analysis (PCA) was applied to the thermal sensor suite to characterize the dominant modes of temperature variation within the dataset and to construct orthogonal predictors of $Z_4$ that are free from the inter-sensor collinearity that limits individual sensor regression.
@@ -583,7 +583,7 @@ M2 ring 5 $-$ Near-M2 air        & -0.001          & -0.074          & 0.073$^\d
 }
 \end{table}
 
-\subsection{Principle Component Correlation}
+\subsection{Principal Component Correlation}
 \label{sec: PCA results}
 
 A recurrent confounding consideration in this analysis is the collinearity of thermal sensors. As the global thermal mode changes or particular spatially coupled sensors change together, it is difficult to isolate individual effects on seeing. PCA decomposition of the thermal mode separates orthogonal components which maximally explain thermal variance. This is discussed in further detail in Section~\ref{subsec: PCA}.
@@ -595,7 +595,7 @@ A recurrent confounding consideration in this analysis is the collinearity of th
     \label{fig:pca mc}
 \end{figure}
 
-Figure~\ref{fig:pca mc} presents the PCA loadings -- coefficients of the linear combination of variables which compose each principle component -- computed on the mean-centered thermal sensor data. Principle Component 1 (PC1) captures almost half (44.6\%) of the thermal variance in the mean-centered data and is composed of a fairly equal positive contribution of all thermal sensors, other than Camera Rotator which has a negative contribution. This seems to be residual variance due to the overall thermal mode which is not completely removed by mean-centering.
+Figure~\ref{fig:pca mc} presents the PCA loadings -- coefficients of the linear combination of variables which compose each principal component -- computed on the mean-centered thermal sensor data. Principal Component 1 (PC1) captures almost half (44.6\%) of the thermal variance in the mean-centered data and is composed of a fairly equal positive contribution of all thermal sensors, other than Camera Rotator which has a negative contribution. This seems to be residual variance due to the overall thermal mode which is not completely removed by mean-centering.
 
 \begin{table}[h]
 \centering
@@ -609,7 +609,7 @@ correction.}
 \label{tab:pc_z4_corr}
 \begin{tabular}{lcccc}
 \toprule
-\thead{Principle \\ Component} & \thead{Variance \\ \%} & \thead{Pearson \\ $r$} & \thead{Spearman \\ $\rho$} & \thead{$p$ \\ value} \\
+\thead{Principal \\ Component} & \thead{Variance \\ \%} & \thead{Pearson \\ $r$} & \thead{Spearman \\ $\rho$} & \thead{$p$ \\ value} \\
 \midrule
 PC 1 & 44.6 & 0.1103 & 0.1276 & 0.1380 \\
 PC 2$^\dagger$ & 11.3 & 0.1191 & 0.1803  & 0.0828 \\
@@ -626,7 +626,7 @@ PC 9 & 3.1 & -0.0675 & -0.0506 & 0.2917 \\
 
 Table~\ref{tab:pc_z4_corr} gives the correlation strength between each mean-centered principal component score and $Z_4^{(c)}$. The correlations of PC 4, 6, and 8 individually with $Z_4^{(c)}$ survive BH correction. They have $r$ values of $-0.261$, $-0.427$, and $0.197$ respectively. PC 4 is flagged for Pearson-Spearman discrepancy, indicating sensitivity to outliers.
 
-Scatter plots of each of the first six principle components against $Z_4^{(c)}$ along with the correlation score $r$, autocorrelation-correction $p$-value, and line of best fit are given in Figure~\ref{fig:pc z4 scatter}.
+Scatter plots of each of the first six principal components against $Z_4^{(c)}$ along with the correlation score $r$, autocorrelation-correction $p$-value, and line of best fit are given in Figure~\ref{fig:pc z4 scatter}.
 
 \begin{figure*}
     \centering
@@ -635,12 +635,12 @@ Scatter plots of each of the first six principle components against $Z_4^{(c)}$ 
     \label{fig:ols pcs}
 \end{figure*}
 
-Controlling for collinearity by using orthogonal principle components, we can use OLS regression to regress $Z_4^{(c)}$ on a linear combination of the PCs. Figure~\ref{fig:ols pcs} represents the standardized OLS coefficients for each principle component on data pooled across all 23 analysis runs. The $R^2$ value, which represents the portion of variance in $Z_4^{(c)}$ which is explained by the linear combination of PCs, is fairly low ($R^2 = 0.33$).
+Controlling for collinearity by using orthogonal principal components, we can use OLS regression to regress $Z_4^{(c)}$ on a linear combination of the PCs. Figure~\ref{fig:ols pcs} represents the standardized OLS coefficients for each principal component on data pooled across all 23 analysis runs. The $R^2$ value, which represents the portion of variance in $Z_4^{(c)}$ which is explained by the linear combination of PCs, is fairly low ($R^2 = 0.33$).
 
 \subsection{Slope Analysis}
 \label{subsec: Slope}
 
-The mean-centered levels analysis embeds a core tension. The practice of mean-centering supposes prior knowledge about the run itself, particularly how any immediate measure compares to the future aggregate. We have also seen in our principle component analysis that mean-centering does not completely remove global thermal structure. Ideally, we would isolate the impact of a given temperature change to the change in $Z_4$ independent of the global thermal mode. To do so, we compare the slope of $Z_4$ with respect to time at each point with the change in thermal sensor readings at each point. The mathematical calculation of the slope and additional computational details are given in Section~\ref{slope methods}.
+The mean-centered levels analysis embeds a core tension. The practice of mean-centering supposes prior knowledge about the run itself, particularly how any immediate measure compares to the future aggregate. We have also seen in our principal component analysis that mean-centering does not completely remove global thermal structure. Ideally, we would isolate the impact of a given temperature change to the change in $Z_4$ independent of the global thermal mode. To do so, we compare the slope of $Z_4$ with respect to time at each point with the change in thermal sensor readings at each point. The mathematical calculation of the slope and additional computational details are given in Section~\ref{slope methods}.
 
 \paragraph{Temperature Sensors} Figure~\ref{fig:megafig}(c) shows the correlation strength of the slope of each temperature sensor ($dT/dt$) with the slope of $Z_4$ ($dZ_4/dt$). None of the direct thermal sensor slopes had BH significant correlations with $dZ_4/dt$ or surpassed an absolute $r$ value of 0.15. Table~\ref{tab:sensor_corr} presents the Pearson $r$ correlation strength and $p$-values for each temperature sensor in the levels timescale and slope timescale for comparison.
 
@@ -766,9 +766,9 @@ The second strongest correlation at $r=-0.269$ seems to reflect more traditional
 
 \subsection{PCA}
 
-The collinearity of sensors might be handled by first decomposing them into orthogonal thermal modes through PCA. The first principle component, PC1, explains $44.6\%$ of the mean-centered thermal sensor variance and is comprised of a relatively equal positive contribution from all temperature sensors (excluding Camera Rotator, which has a negative contribution to PC1). This indicates that some of the overall thermal mode is not completely removed by mean-centering alone. Future work could use detrending by subtracting the first principle component from the raw data to better isolate dynamic thermal modes. Further principle components have interesting compositions with point to other gradients and sensor interactions. 
+The collinearity of sensors might be handled by first decomposing them into orthogonal thermal modes through PCA. The first principal component, PC1, explains $44.6\%$ of the mean-centered thermal sensor variance and is comprised of a relatively equal positive contribution from all temperature sensors (excluding Camera Rotator, which has a negative contribution to PC1). This indicates that some of the overall thermal mode is not completely removed by mean-centering alone. Future work could use detrending by subtracting the first principal component from the raw data to better isolate dynamic thermal modes. Further principal components have interesting compositions with point to other gradients and sensor interactions. 
 
-The second principle component has prominent positive contributions from M1M3 glass and M2 glass ring 6 and prominent negative contributions Above-M1M3 air and M2 glass ring 5 with moderate contributions from many of the other variables. This seems to combine two gradients -- one between the two sensors on the M2 glass and another between the M1M3 glass and air above it. PC2 explains 11.3\% of the remaining variance in the thermal suite. 
+The second principal component has prominent positive contributions from M1M3 glass and M2 glass ring 6 and prominent negative contributions Above-M1M3 air and M2 glass ring 5 with moderate contributions from many of the other variables. This seems to combine two gradients -- one between the two sensors on the M2 glass and another between the M1M3 glass and air above it. PC2 explains 11.3\% of the remaining variance in the thermal suite. 
 
 PC3 has a very strong positive contributions from Camera Rotator and M1M3-level air with loadings of 0.77 and 0.51 respectively. 
 
@@ -778,7 +778,7 @@ PC5 seems to be primarily capturing the difference between the weather station s
 
 PC6 has the strongest Pearson correlation with $Z_4^{(c)}$ of $r = -0.427$ and is not flagged for outlier sensitivity. The strongest positive loadings of PC6 are M1M3 glass and air with a prominent negative loading from the camera hexapod. This may indicate a thermal gradient throughout the height of the telescope in both the air column and the structure itself. 
 
-Though the principle components point to interesting combinations of effects, they are still not robustly linearly predictive of $Z_4^{(c)}$. Using OLS regression gives a sub-par $R^2$ value of 0.329.
+Though the principal components point to interesting combinations of effects, they are still not robustly linearly predictive of $Z_4^{(c)}$. Using OLS regression gives a sub-par $R^2$ value of 0.329.
 
 \subsection{Slope and Time Scales}
 
@@ -795,7 +795,7 @@ This supports the idea that $Z_4$ and independent thermal variables may be movin
 
 \subsection{A Core Tension}
 \label{subsec: Tension}
-Many of the statistical and data science methods used in this analysis are not directly interpretable. The coefficients in Ridge regression give an idea of the relevant variables and their effect on predictions, but they do not tell a definitive cause and effect story. The principle components explain variance and seem to relate to our focus measure, but they are not meaningfully interpretable either. We can optimize for accuracy in making predictions of focus, but these effects are difficult to isolate and finding the true thermal impactors rather than proxies or noise through the project of prediction and correlation is a complex task. 
+Many of the statistical and data science methods used in this analysis are not directly interpretable. The coefficients in Ridge regression give an idea of the relevant variables and their effect on predictions, but they do not tell a definitive cause and effect story. The principal components explain variance and seem to relate to our focus measure, but they are not meaningfully interpretable either. We can optimize for accuracy in making predictions of focus, but these effects are difficult to isolate and finding the true thermal impactors rather than proxies or noise through the project of prediction and correlation is a complex task. 
 
 
 \subsection{Limitations}
