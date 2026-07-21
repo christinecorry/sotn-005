@@ -591,7 +591,7 @@ A recurrent confounding consideration in this analysis is the collinearity of th
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/fig3_pca_loadings_mc.pdf}
-    \caption{PCA loading heatmap for the first five principle components computed on mean-centered sensor data.}
+    \caption{PCA loading heatmap for the first six principal components computed on mean-centered sensor data.}
     \label{fig:pca mc}
 \end{figure}
 
@@ -631,7 +631,7 @@ Scatter plots of each of the first six principle components against $Z_4^{(c)}$ 
 \begin{figure*}
     \centering
     \includegraphics[width=1\linewidth]{figures/fig4_ols_all_pcs.pdf}
-    \caption{Multiple OLS regression of $Z_4^{(c)}$ on all five mean-centered PC scores simultaneously. Bars show standardized coefficients; the reported $R^2$ indicates the fraction of within-run $Z_4$ variance explained jointly by the thermal PC modes.}
+    \caption{Multiple OLS regression of $Z_4^{(c)}$ on all nine mean-centered PC scores simultaneously. Bars show standardized coefficients; the reported $R^2$ indicates the fraction of within-run $Z_4$ variance explained jointly by the thermal PC modes.}
     \label{fig:ols pcs}
 \end{figure*}
 
@@ -729,7 +729,7 @@ Another potential confounding pattern is the consistency of $Z_4$ throughout the
 \begin{figure*}
     \centering
     \includegraphics[width=1\linewidth]{figures/fig7_corr_vs_smoothness_top5.pdf}
-    \caption{Per-run Pearson $|r|$ between the top thermal sensor and mean-centered $Z_4$ plotted against the run smoothness metric.}
+    \caption{Per-run Pearson $|r|$ between each of the top five thermal sensors and mean-centered $Z_4$ plotted against the run smoothness metric.}
     \label{fig:corr vs smooth}
 \end{figure*}
 
@@ -738,7 +738,7 @@ Figure~\ref{fig:corr vs smooth} plots the per-run Pearson $|r|$ between the ther
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/fig8_ridge_smooth_vs_dynamic.pdf}
-    \caption{Distribution of per-run standardized regression coefficients for the levels regression $Z_4^{(c)}$ on all mean-centered temperature sensors, stratified by smoothness group. OLS results are show on the left, Ridge cross-validated results on the right.}
+    \caption{Distribution of per-run standardized Ridge cross-validated regression coefficients for the levels regression of $Z_4^{(c)}$ on the mean-centered temperature sensors, stratified by smoothness group. Blue boxes are the 17 smooth runs and orange boxes the 6 dynamic runs. The dashed vertical line marks zero.}
     \label{fig:regress by smooth levels}
 \end{figure}
 
