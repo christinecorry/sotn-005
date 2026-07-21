@@ -189,7 +189,7 @@ The remainder of this paper is structured as follows. Section~\ref{sec:Data} des
 
 \subsection{Dataset}
 \label{subsec:Dataset}
-The data used in this study comprises observations obtained from November 2, 2025 to December 24, 2025. The observations analyzed here are open-loop stability runs. Throughout a stability run, the telescope is held at fixed elevation, azimuth, and rotation angle. The AOS is only operated in open-loop mode, such that no real-time wavefront correction is applied in between exposures after the LUT corrections. The measured $Z_4$ reflects the residual defocus optical error after LUT correction. 
+The data used in this study comprises observations obtained from November 1, 2025 to December 23, 2025. The observations analyzed here are open-loop stability runs. Throughout a stability run, the telescope is held at fixed elevation, azimuth, and rotation angle. The AOS is only operated in open-loop mode, such that no real-time wavefront correction is applied in between exposures after the LUT corrections. The measured $Z_4$ reflects the residual defocus optical error after LUT correction. 
 
 We began with a total of 25 runs over 17 unique nights. The majority of runs consist of 40 sequences with two outliers at 19 and 44 sequences. These two runs were removed from analysis. Each run spanned approximately 28 minutes. See Table~\ref{tab:dataset_summary} for more details.
 
@@ -198,7 +198,7 @@ We began with a total of 25 runs over 17 unique nights. The majority of runs con
 \caption{Summary of the open-loop stability run dataset. Two runs were
 excluded from analysis due to data quality issues (Run~9: mid-run gap
 of 377\,s; Run~13: truncated at 19 sequences). All statistics are
-reported for the 25-run analysis dataset unless otherwise noted.}
+reported for the 23-run analysis dataset unless otherwise noted.}
 \label{tab:dataset_summary}
 \begin{tabular}{lc}
 \toprule
@@ -215,7 +215,6 @@ Total sequences (analysis)    & 920 \\
 \midrule
 \multicolumn{2}{l}{\textit{$Z_4$ statistics (23-run analysis dataset)}} \\
 Mean of run means ($\bar{Z}_4$ across nights)  & -0.0284\,$\mu$m \\
-Night-to-night std                   & 0.3720\,$\mu$m \\
 Overall $Z_4$ range (all runs)                  & -1.1132 to 0.8740\,$\mu$m \\
 Mean within-run $\sigma_{Z_4}$     & 0.0998\,$\mu$m \\
 Between-run $\sigma_{Z_4}$         & 0.3720\,$\mu$m \\
@@ -375,7 +374,7 @@ collinearity between sensors.}
 \end{figure}
 
 \paragraph{Excluded runs}
-Two runs were excluded from analysis. Run 9, taken on November 8, 2025, had a 377-second gap in the middle of exposure data. Run 13, taken on November 11, 2025, had only 19 sequences compared to the standard 40 sequences. It was likely truncated for an unknown operational reason. 
+Two runs were excluded from analysis. Run 9, taken on November 7, 2025, had a 377-second gap in the middle of exposure data. Run 13, taken on November 10, 2025, had only 19 sequences compared to the standard 40 sequences. It was likely truncated for an unknown operational reason. 
 
 \paragraph{Evaluating smoothness}
 
@@ -477,8 +476,9 @@ Figure~\ref{fig:megafig}(a)  shows the pooled linear correlation strength $r$ be
 \begin{itemize}
     \item M2 Glass Ring 6 ($r=0.292$),
     \item TMA Truss -x/-y ($r=0.255$),
-    \item M1M3 Glass ($r=-0.207$), and
-    \item Camera Hexapod ($r=0.204$)
+    \item M1M3 Glass ($r=-0.207$),
+    \item Camera Hexapod ($r=0.204$), and
+    \item M2 Hexapod ($r=0.135$)
 \end{itemize}
  listed in descending absolute $r$ value. Scatter plots of each of the top four sensors against $Z_4^{(c)}$ colored by run are presented in Figure~\ref{fig:top 4}. These show that the linear best fit is not representative of all runs, with some in the opposite direction of the pooled correlation. A detailed table of the correlation metrics is presented in Table~\ref{tab:levels_correlations}.
 
@@ -513,7 +513,7 @@ Above-M1M3 air          & -0.004          & -0.059          & 0.055$^\dagger$ & 
 \end{tabular}
 \end{table}
 
-We can also compare the Pearson $r$ value with the Spearman $\rho$, as presented in Table~\ref{tab:levels_correlations}, to assess whether the correlations are driven by outliers. Close agreement between the two metrics would indicate that the trend is monotonic. Disagreements of larger than around $0.05$ flag outlier sensitivity. Among our four BH significant sensors, only M2 glass ring 6 and TMA truss -x/-y have an $|r-\rho |$ value less than $0.05$. 
+We can also compare the Pearson $r$ value with the Spearman $\rho$, as presented in Table~\ref{tab:levels_correlations}, to assess whether the correlations are driven by outliers. Close agreement between the two metrics would indicate that the trend is monotonic. Disagreements of larger than around $0.03$ flag outlier sensitivity. Among our five BH significant sensors, only TMA truss $-x/-y$ has an $|r-\rho |$ value less than $0.03$.
 
 The pairwise correlations alone cannot determine whether a sensor that correlates with $Z_4^{(c)}$ has independent predictive information from the general collinearity of the sensors. A sensor may appear to couple with $Z_4$ when in fact both $Z_4$ and the sensor are coupled with a separate overall thermal mode driving the effect. To address this, we turn to multivariate Ridge regression.
 
@@ -543,7 +543,8 @@ Figure~\ref{fig:megafig}(b) shows the correlation strength of each gradient prox
     \item TMA Truss +x/+y -- TMA Truss -x/-y ($r=-0.234$),
     \item M1M3-level Air -- Near-M2 Air ($r=-0.218$),
     \item TMA Truss -x/-y -- Weather Station ($r=0.216$),
-    \item Near-M2 Air -- Camera Hexapod ($r=-0.160$), and
+    \item Near-M2 Air -- Weather Station ($r=0.185$),
+    \item M2 Hexapod -- Camera Hexapod ($r=-0.160$), and
     \item Near-M2 Air -- Camera-level Air ($r=0.152$)
 \end{itemize}
 listed in descending order of $|r|$. Table~\ref{tab:gradient_levels_correlations} presents the correlation metrics of the gradient proxies and $Z_4^{(c)}$. All measures except for M1M3-level Air -- Near-M2 Air are flagged for discrepancy between Pearson $r$ correlation metric and Spearman $\rho$, indicating that most of the correlation between gradients and $Z_4^{(c)}$ is sensitive to outliers.
@@ -750,7 +751,7 @@ The central finding of this analysis is that the thermal--optical system at the 
 
 \subsection{Independent Predictors}
 
-Of the 13 temperature sensors, 10 have Pearson-Spearman discrepancies suggesting sensitivity to outliers. Only one of the four sensors with significant correlation to $Z_4$ has sufficiently low Pearson-Spearman discrepancy to seem resistant to outlier noise. This was TMA Truss -x/-y. Despite this seeming significant relationship, plotting TMA Truss -x/-y against $Z_4^{(c)}$ in Figure~\ref{fig:top 4} shows that many of the runs have relationships between TMA Truss -x/-y and $Z_4^{(c)}$ not well fit by the correlation value.
+Of the 13 temperature sensors, 10 have Pearson-Spearman discrepancies suggesting sensitivity to outliers. Only one of the five sensors with significant correlation to $Z_4$ has sufficiently low Pearson-Spearman discrepancy to seem resistant to outlier noise. This was TMA Truss -x/-y. Despite this seeming significant relationship, plotting TMA Truss -x/-y against $Z_4^{(c)}$ in Figure~\ref{fig:top 4} shows that many of the runs have relationships between TMA Truss -x/-y and $Z_4^{(c)}$ not well fit by the correlation value.
 
 Given the general disagreement between Pearson $r$ and Spearman $\rho$ and the stark difference in linear trends depending on the run, individual sensors do not seem to robustly and dependably predict pooled $Z_4$ trends over the course of all runs. 
 
