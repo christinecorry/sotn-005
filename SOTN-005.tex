@@ -69,7 +69,7 @@ The Vera C. Rubin Observatory’s Active Optics System corrects slowly varying, 
 
 The Vera C. Rubin Observatory is designed to undertake an ambitious 10-year wide-field optical survey of the southern sky from Cerro Pachón in northern Chile. The project is called the Legacy Survey of Space and Time, or LSST. The Rubin Observatory is a paradigm shift in ground-based astronomy from individual object astronomy, in which researchers point telescopes at known targets, to survey-based, data-driven cosmology.
 Its centerpiece, the Simonyi Survey Telescope, has a three-mirror design with an 8.4-m primary/tertiary mirror (M1M3) composed of two differently curved mirrors on one borosilicate glass substrate and a 3.5-m secondary mirror (M2). This design allows high sensitivity across an exceptionally wide 3.5 degree field of view. A single image covers an area of the sky more than 40 times the size of the full moon and is taken with the largest digital camera ever made, the 3200-megapixel LSST Camera (LSSTCam).
-Historically, ground-based telescopes were spatially limited. To observe faint objects, they would need to hold at a single point in the sky to gather enough light to detect the object. The Rubin Observatory's sensitivity (24.5 magnitude in a 30 second exposure and 27.5 magnitude for co-added images \cite{Ivezic2019}) allows faster exposures of faint and distant objects. This combination of sensitivity, size, and fast-movement allow observation of the sky broadly over time, empowering the identification of transient events like supernovae, asteroids, and variable stars and investigation of galaxy evolution which can help to constrain the nature of cosmological features like Dark Matter and Dark Energy.
+Historically, ground-based telescopes were spatially limited. To observe faint objects, they would need to hold at a single point in the sky to gather enough light to detect the object. The Rubin Observatory's sensitivity (24.5 magnitude in a 30 second exposure and 27.5 magnitude for co-added images \cite{Ivezic2019}) allows faster exposures of faint and distant objects. This combination of sensitivity, size, and fast-movement allows observation of the sky broadly over time, empowering the identification of transient events like supernovae, asteroids, and variable stars and investigation of galaxy evolution which can help to constrain the nature of cosmological features like Dark Matter and Dark Energy.
 
 \begin{figure}
     \centering
@@ -412,7 +412,7 @@ Because each analysis involves simultaneous correlation tests across multiple pr
 \subsection{Regression}
 \label{sec: regression methods}
 
-To assess the independent contribution of each temperature sensor and gradient proxy to $Z_4^{(c)}$, we fit multivariate regression models relating the full set of predictors to the optical target simultaneously. This complements the pairwise correlation analysis by controlling for inter-predictor collinearity, at the cost of requiring the assumption that relationships between thermal sensors and $Z_4$ is linear.
+To assess the independent contribution of each temperature sensor and gradient proxy to $Z_4^{(c)}$, we fit multivariate regression models relating the full set of predictors to the optical target simultaneously. This complements the pairwise correlation analysis by controlling for inter-predictor collinearity, at the cost of requiring the assumption that relationships between thermal sensors and $Z_4$ are linear.
 
 \paragraph{OLS}
 Ordinary least squares (OLS) regression minimizes the sum of squared residuals:
@@ -547,7 +547,7 @@ Figure~\ref{fig:megafig}(b) shows the correlation strength of each gradient prox
     \item M2 hexapod -- Camera hexapod ($r=-0.160$), and
     \item Near-M2 air -- Camera-level air ($r=0.152$)
 \end{itemize}
-listed in descending order of $|r|$. Table~\ref{tab:gradient_levels_correlations} presents the correlation metrics of the gradient proxies and $Z_4^{(c)}$. All measures except for M1M3-level air -- Near-M2 air are flagged for discrepancy between Pearson $r$ correlation metric and Spearman $\rho$, indicating that most of the correlation between gradients and $Z_4^{(c)}$ is sensitive to outliers.
+listed in descending order of $|r|$. Table~\ref{tab:gradient_levels_correlations} presents the correlation metrics of the gradient proxies and $Z_4^{(c)}$. All BH-significant measures except for M1M3-level air -- Near-M2 air are flagged for discrepancy between Pearson $r$ correlation metric and Spearman $\rho$, indicating that most of the correlation between gradients and $Z_4^{(c)}$ is sensitive to outliers.
 
 \begin{table}[h]
 \centering
@@ -733,7 +733,7 @@ Another potential confounding pattern is the consistency of $Z_4$ throughout the
     \label{fig:corr vs smooth}
 \end{figure*}
 
-Figure~\ref{fig:corr vs smooth} plots the per-run Pearson $|r|$ between the thermal sensor and $Z_4^{(c)}$ as a function of the smoothness of each run (lag-1 autocorrelation of $Z_4$). Plots are given for each of the top five sensors in the single sensor pooled correlation analysis. A positive trend would support the hypothesis that smooth runs are signal-dominated while dynamic runs are noise-dominated and obscure thermal-optical coupling. This seems to be consistently true in Figure~\ref{fig:corr vs smooth}. We see a statistically significant positive relationships between the smoothness measure and Pearson $r$ correlation metric for all five of the top correlation sensors. 
+Figure~\ref{fig:corr vs smooth} plots the per-run Pearson $|r|$ between the thermal sensor and $Z_4^{(c)}$ as a function of the smoothness of each run (lag-1 autocorrelation of $Z_4$). Plots are given for each of the top five sensors in the single sensor pooled correlation analysis. A positive trend would support the hypothesis that smooth runs are signal-dominated while dynamic runs are noise-dominated and obscure thermal-optical coupling. This seems to be consistently true in Figure~\ref{fig:corr vs smooth}. We see a statistically significant positive relationship between the smoothness measure and Pearson $r$ correlation metric for all five of the top correlation sensors. 
 
 \begin{figure}
     \centering
@@ -768,9 +768,9 @@ The second strongest correlation at $r=-0.269$ seems to reflect more traditional
 
 The collinearity of sensors might be handled by first decomposing them into orthogonal thermal modes through PCA. The first principal component, PC1, explains $44.6\%$ of the mean-centered thermal sensor variance and is comprised of a relatively equal positive contribution from all temperature sensors (excluding Camera rotator, which has a negative contribution to PC1). This indicates that some of the overall thermal mode is not completely removed by mean-centering alone. Future work could use detrending by subtracting the first principal component from the raw data to better isolate dynamic thermal modes. Further principal components have interesting compositions which point to other gradients and sensor interactions. 
 
-The second principal component has prominent positive contributions from M1M3 glass and M2 glass ring 6 and prominent negative contributions Above-M1M3 air and M2 glass ring 5 with moderate contributions from many of the other variables. This seems to combine two gradients -- one between the two sensors on the M2 glass and another between the M1M3 glass and air above it. PC2 explains 11.3\% of the remaining variance in the thermal suite. 
+The second principal component has prominent positive contributions from M1M3 glass and M2 glass ring 6 and prominent negative contributions from Above-M1M3 air and M2 glass ring 5 with moderate contributions from many of the other variables. This seems to combine two gradients -- one between the two sensors on the M2 glass and another between the M1M3 glass and air above it. PC2 explains 11.3\% of the remaining variance in the thermal suite. 
 
-PC3 has a very strong positive contributions from Camera rotator and M1M3-level air with loadings of 0.77 and 0.51 respectively. 
+PC3 has very strong positive contributions from Camera rotator and M1M3-level air with loadings of 0.77 and 0.51 respectively. 
 
 PC4 seems to capture outside temperature with contributions of 0.65 from the weather station sensor and 0.50 from the sonic temperature. There are also some moderate negative contributions from air above M1M3 and structural sensors. This may capture dome seeing effects between the ambient air temperature outside the dome and the inside air coupled with structural component temperatures. PC4 has a moderate anti-correlation with $Z_4^{(c)}$ at BH-corrected significant levels, but is flagged for Pearson-Spearman discrepancy. 
 
@@ -800,7 +800,7 @@ Many of the statistical and data science methods used in this analysis are not d
 
 \subsection{Limitations}
 
-The largest limitation in isolating thermal effects is the collinearity between sensors. It is practically impossible isolate thermal change in an individual component to validate that it drives focus aberrations. 
+The largest limitation in isolating thermal effects is the collinearity between sensors. It is practically impossible to isolate thermal change in an individual component to validate that it drives focus aberrations. 
 
 Although Ridge regression handles collinearity, presenting the distribution in this fashion may mask some genuine trends. It is possible that in one run, the Ridge regression arbitrarily allocates predictive preference to one collinear sensor over the others. The opposite could be true in another run. This would cause the distribution to cluster around zero. Sensors which demonstrate this pattern of high individual correlation with $Z_4^{(c)}$ but unstable Ridge coefficients could be interpreted as belonging to a collinear group that collectively predicts $Z_4^{(c)}$.
 
@@ -812,7 +812,7 @@ Future analysis should explore more complex non-linear modeling. This could be i
 
 The slope correlation analysis would benefit from considering lagging impacts. The rate of change is a very immediate measure. These effects might be better understood with small delays between the change in temperature and the potential correlated change in $Z_4$. This analysis considers small windows of time around each point in fitting a polynomial and calculating the slope, but further analysis might explore explicit lag analysis. 
 
-The same analysis pipeline repeated with different temperature sensors could probe other effects we are currently blind to. Extending to other sensors in the telescope structure could refine our understanding structural thermal gradient effects. The camera skin temperature might be of particular interest 
+The same analysis pipeline repeated with different temperature sensors could probe other effects we are currently blind to. Extending to other sensors in the telescope structure could refine our understanding of structural thermal gradient effects. The camera skin temperature might be of particular interest.
 
 This analysis pipeline could also be replicated with other seeing targets, such as higher order Zernike coefficients.
 
